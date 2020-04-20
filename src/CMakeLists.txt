@@ -11,6 +11,7 @@ add_library(
     command/sleep_command.c
     engine/active_object_engine_task.c
     engine/default_active_object_engine.c
+    script/script_base.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/list/list_node.c

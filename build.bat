@@ -13,7 +13,8 @@ mkdir %OUTPUT_DIR% > NUL 2>&1
            src/command/null_command.c ^
            src/command/sleep_command.c ^
            src/engine/active_object_engine_task.c ^
-           src/engine/default_active_object_engine.c
+           src/engine/default_active_object_engine.c ^
+           src/script/script_base.c
 if %errorlevel% neq 0 exit /b
 
 rlink -form=lib -output=%OUTPUT_DIR%/%PROJECT_NAME%.lib *.obj
