@@ -35,11 +35,10 @@ inline static bool HasErrorWithLastScript(ScriptRunner self) {
 }
 
 inline static void CleanUp(ScriptRunner self) {
-  ActiveObjectEngine e = self->base.engine;
   Command script = GetLastScript(self);
   self->base.name = scriptBase->GetName(script);
   self->base.error = scriptBase->GetError(script);
-  e->AddCommand(e, self->base.notification_command);
+  _scriptBase->Notify((ScriptBase)self);
 }
 
 static void Do(Command base) {

@@ -20,25 +20,24 @@ static void Delete(Command* base) {
 static void Do(Command base) {
   ScriptStrategy self = (ScriptStrategy)base;
   ScriptHandle h = (ScriptHandle)self->handle;
-  ActiveObjectEngine e = (ActiveObjectEngine)self->base.engine;
   if (!self->started) {
     if (!h->NeedsExecute(h)) {
-      e->AddCommand(e, self->base.notification_command);
+      _scriptBase->Notify((ScriptBase)self);
     } else if (!h->AssertPrecondition(h)) {
       self->base.error = h->GetError(h);
-      e->AddCommand(e, self->base.notification_command);
+      _scriptBase->Notify((ScriptBase)self);
     } else {
       self->started = true;
       h->Init(h);
-      e->AddCommand(e, base);
+      _scriptBase->Recurse((ScriptBase)self);
     }
   } else if (h->Done(h)) {
     if (!h->AssertPostcondition(h)) self->base.error = h->GetError(h);
     h->CleanUp(h);
-    e->AddCommand(e, self->base.notification_command);
+    _scriptBase->Notify((ScriptBase)self);
   } else {
     h->Idle(h);
-    e->AddCommand(e, base);
+    _scriptBase->Recurse((ScriptBase)self);
   }
 }
 

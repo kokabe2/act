@@ -13,11 +13,9 @@ typedef struct {
 
 static void DeleteSpy(Command* self) { ((ScriptSpy)*self)->deleted = true; }
 
-static void DoSpy(Command base) {
-  ScriptSpy self = (ScriptSpy)base;
-  ActiveObjectEngine e = self->base.engine;
-  self->done = true;
-  e->AddCommand(e, self->base.notification_command);
+static void DoSpy(Command self) {
+  ((ScriptSpy)self)->done = true;
+  _scriptBase->Notify((ScriptBase)self);
 }
 
 static Command New(const char* name) {
