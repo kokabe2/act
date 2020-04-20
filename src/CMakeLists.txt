@@ -23,6 +23,7 @@ add_executable(
     command/counting_command_stub_test.cpp
     command/null_command_test.cpp
     engine/default_active_object_engine_test.cpp
+    util/time_unit_stub.c
     )
 
 add_dependencies(gtests googletest)
