@@ -16,7 +16,8 @@ typedef struct {
 } ActiveObjectEngineTaskStruct, *ActiveObjectEngineTask;
 
 inline static Command BlockingGetCommand(ActiveObjectEngineTask self) {
-  Command* c = inbox->BlockingGet(self->inbox);
+  Inbox inbox = self->inbox;
+  Command* c = inbox->BlockingGet(inbox);
   return c != NULL ? *c : NULL;
 }
 
@@ -28,7 +29,8 @@ static void TaskAction(void* base) {
 }
 
 inline static void AddCommand(ActiveObjectEngine self, Command c) {
-  inbox->BlockingPost(((ActiveObjectEngineTask)self)->inbox, &c, sizeof(Command));
+  Inbox inbox = ((ActiveObjectEngineTask)self)->inbox;
+  inbox->BlockingPost(inbox, &c, sizeof(Command));
 }
 
 static void Delete(ActiveObjectEngine* base) {
@@ -36,12 +38,17 @@ static void Delete(ActiveObjectEngine* base) {
   self->done = true;
   AddCommand(*base, NULL);
 
-  inbox->Delete(&self->inbox);
-  task->Delete(&self->task);
+  Inbox inbox = self->inbox;
+  inbox->Delete(&inbox);
+  Task task = self->task;
+  task->Delete(&task);
   heap->Delete((void**)base);
 }
 
-static void Run(ActiveObjectEngine self) { task->Run(((ActiveObjectEngineTask)self)->task); }
+static void Run(ActiveObjectEngine self) {
+  Task task = ((ActiveObjectEngineTask)self)->task;
+  task->Run(task);
+}
 
 static ActiveObjectEngine New(void) {
   ActiveObjectEngineTask self = (ActiveObjectEngineTask)heap->New(sizeof(ActiveObjectEngineTaskStruct));
