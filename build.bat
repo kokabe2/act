@@ -16,7 +16,8 @@ mkdir %OUTPUT_DIR% > NUL 2>&1
            src/engine/default_active_object_engine.c ^
            src/script/script_base.c ^
            src/script/script_runner.c ^
-           src/script/script_strategy.c
+           src/script/script_strategy.c ^
+           src/script/simple_script.c
 if %errorlevel% neq 0 exit /b
 
 rlink -form=lib -output=%OUTPUT_DIR%/%PROJECT_NAME%.lib *.obj

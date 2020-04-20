@@ -14,6 +14,7 @@ add_library(
     script/script_base.c
     script/script_runner.c
     script/script_strategy.c
+    script/simple_script.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/error/runtime_error.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
@@ -36,6 +37,7 @@ add_executable(
     script/script_spy.c
     script/script_spy_test.cpp
     script/script_strategy_test.cpp
+    script/simple_script_test.cpp
     util/time_unit_stub.c
     )
 
