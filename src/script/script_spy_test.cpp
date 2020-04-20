@@ -8,7 +8,7 @@ extern "C" {
 #include "script/script_spy.h"
 }
 
-class ScriptTest : public ::testing::Test {
+class ScriptSpyTest : public ::testing::Test {
  protected:
   RuntimeError error;
   ActiveObjectEngine e;
@@ -32,31 +32,31 @@ class ScriptTest : public ::testing::Test {
   }
 };
 
-TEST_F(ScriptTest, Delete) {
+TEST_F(ScriptSpyTest, Delete) {
   script->Delete(&script);
 
   EXPECT_TRUE(scriptSpy->DeleteCalled(script));
 }
 
-TEST_F(ScriptTest, Do) {
+TEST_F(ScriptSpyTest, Do) {
   script->Do(script);
 
   EXPECT_TRUE(scriptSpy->RunCalled(script));
 }
 
-TEST_F(ScriptTest, SetEngine) { EXPECT_EQ(e, scriptSpy->GetEngine(script)); }
+TEST_F(ScriptSpyTest, SetEngine) { EXPECT_EQ(e, scriptSpy->GetEngine(script)); }
 
-TEST_F(ScriptTest, SetNotificationCommand) { EXPECT_EQ(c, scriptSpy->GetNotificationCommand(script)); }
+TEST_F(ScriptSpyTest, SetNotificationCommand) { EXPECT_EQ(c, scriptSpy->GetNotificationCommand(script)); }
 
-TEST_F(ScriptTest, GetName) { EXPECT_STREQ("test", scriptBase->GetName(script)); }
+TEST_F(ScriptSpyTest, GetName) { EXPECT_STREQ("test", scriptBase->GetName(script)); }
 
-TEST_F(ScriptTest, HasError) {
+TEST_F(ScriptSpyTest, HasError) {
   scriptSpy->SetError(script, error);
 
   EXPECT_TRUE(scriptBase->HasError(script));
 }
 
-TEST_F(ScriptTest, GetError) {
+TEST_F(ScriptSpyTest, GetError) {
   scriptSpy->SetError(script, error);
 
   EXPECT_EQ(error, scriptBase->GetError(script));
