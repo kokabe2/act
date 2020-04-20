@@ -12,7 +12,7 @@ class CountingCommandStubTest : public ::testing::Test {
 
   virtual void SetUp() { c = countingCommandStub->New(); }
 
-  virtual void TearDown() { c->Delete(&c); }
+  virtual void TearDown() { countingCommandStub->Delete(&c); }
 };
 
 TEST_F(CountingCommandStubTest, ConditionAfterCreation) {

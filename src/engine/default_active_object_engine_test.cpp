@@ -19,7 +19,7 @@ class DefaultActiveObjectEngineTest : public ::testing::Test {
 
   virtual void TearDown() {
     e->Delete(&e);
-    c->Delete(&c);
+    countingCommandStub->Delete(&c);
   }
 };
 
