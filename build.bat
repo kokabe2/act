@@ -12,6 +12,7 @@ mkdir %OUTPUT_DIR% > NUL 2>&1
            -include=v1/,src/,external/ ^
            src/command/counting_command_stub.c ^
            src/command/null_command.c ^
+           src/engine/active_object_engine_task.c ^
            src/engine/default_active_object_engine.c
 if %errorlevel% neq 0 exit /b
 

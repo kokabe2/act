@@ -9,6 +9,7 @@ add_library(
     act
     command/counting_command_stub.c
     command/null_command.c
+    engine/active_object_engine_task.c
     engine/default_active_object_engine.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
