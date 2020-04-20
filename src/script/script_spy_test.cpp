@@ -10,11 +10,13 @@ extern "C" {
 
 class ScriptTest : public ::testing::Test {
  protected:
+  RuntimeError error;
   ActiveObjectEngine e;
   Command c;
   Command script;
 
   virtual void SetUp() {
+    error = runtimeError->New(kAssertionError, "This is just a test.", 0xdeadbeef);
     e = defaultActiveObjectEngine->New();
     c = countingCommandStub->New();
     script = scriptSpy->New("test");
@@ -26,6 +28,7 @@ class ScriptTest : public ::testing::Test {
     scriptSpy->Delete(&script);
     c->Delete(&c);
     e->Delete(&e);
+    runtimeError->Delete(&error);
   }
 };
 
@@ -47,14 +50,14 @@ TEST_F(ScriptTest, SetNotificationCommand) { EXPECT_EQ(c, scriptSpy->GetNotifica
 
 TEST_F(ScriptTest, GetName) { EXPECT_STREQ("test", scriptBase->GetName(script)); }
 
-TEST_F(ScriptTest, GetErrorCode) {
-  scriptSpy->SetErrorCode(script, 1234);
-
-  EXPECT_EQ(1234, scriptBase->GetErrorCode(script));
-}
-
 TEST_F(ScriptTest, HasError) {
-  scriptSpy->SetErrorCode(script, 1234);
+  scriptSpy->SetError(script, error);
 
   EXPECT_TRUE(scriptBase->HasError(script));
+}
+
+TEST_F(ScriptTest, GetError) {
+  scriptSpy->SetError(script, error);
+
+  EXPECT_EQ(error, scriptBase->GetError(script));
 }

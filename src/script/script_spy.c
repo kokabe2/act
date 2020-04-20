@@ -38,7 +38,7 @@ static ActiveObjectEngine GetEngine(Command self) { return ((ScriptBase)self)->e
 
 static Command GetNotificationCommand(Command self) { return ((ScriptBase)self)->notification_command; }
 
-static void SetErrorCode(Command self, int error_code) { ((ScriptBase)self)->error_code = error_code; }
+static void SetError(Command self, RuntimeError error) { ((ScriptBase)self)->error = error; }
 
 static const ScriptSpyMethodStruct kTheMethod = {
     .New = New,
@@ -47,7 +47,7 @@ static const ScriptSpyMethodStruct kTheMethod = {
     .RunCalled = RunCalled,
     .GetEngine = GetEngine,
     .GetNotificationCommand = GetNotificationCommand,
-    .SetErrorCode = SetErrorCode,
+    .SetError = SetError,
 };
 
 const ScriptSpyMethod scriptSpy = &kTheMethod;

@@ -12,7 +12,7 @@ typedef struct {
   bool (*RunCalled)(Command self);
   ActiveObjectEngine (*GetEngine)(Command self);
   Command (*GetNotificationCommand)(Command self);
-  void (*SetErrorCode)(Command self, int error_code);
+  void (*SetError)(Command self, RuntimeError error);
 } ScriptSpyMethodStruct;
 typedef const ScriptSpyMethodStruct* ScriptSpyMethod;
 

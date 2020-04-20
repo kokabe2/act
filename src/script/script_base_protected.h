@@ -10,7 +10,7 @@ typedef struct {
   ActiveObjectEngine engine;
   Command notification_command;
   const char *name;
-  int error_code;
+  RuntimeError error;
 } ScriptBaseStruct, *ScriptBase;
 
 #endif  // SRC_SCRIPT_SCRIPT_BASE_PROTECTED_H_

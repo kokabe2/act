@@ -12,16 +12,16 @@ static void SetNotificationComand(Command self, Command notification_command) {
 
 static const char* GetName(Command self) { return ((ScriptBase)self)->name; }
 
-static int GetErrorCode(Command self) { return ((ScriptBase)self)->error_code; }
+static bool HasError(Command self) { return ((ScriptBase)self)->error != NULL; }
 
-static bool HasError(Command self) { return ((ScriptBase)self)->error_code != 0; }
+static RuntimeError GetError(Command self) { return ((ScriptBase)self)->error; }
 
 static const ScriptAbstractMethodStruct kTheMethod = {
     .SetEngine = SetEngine,
     .SetNotificationComand = SetNotificationComand,
     .GetName = GetName,
-    .GetErrorCode = GetErrorCode,
     .HasError = HasError,
+    .GetError = GetError,
 };
 
 const ScriptAbstractMethod scriptBase = &kTheMethod;

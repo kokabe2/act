@@ -12,10 +12,13 @@ add_library(
     engine/active_object_engine_task.c
     engine/default_active_object_engine.c
     script/script_base.c
+    ${PROJECT_SOURCE_DIR}/external/bleu/src/error/runtime_error.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/list/list_node.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/list/list.c
+    ${PROJECT_SOURCE_DIR}/external/bleu/src/string/str.c
+    ${PROJECT_SOURCE_DIR}/external/bleu/src/string/string_builder.c
     )
 
 add_executable(
