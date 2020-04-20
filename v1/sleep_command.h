@@ -7,7 +7,8 @@
 #include "command.h"
 
 typedef struct {
-  Command (*New)(int milliseconds, ActiveObjectEngine engine, Command wakeup_command);
+  Command (*New)(int milliseconds, ActiveObjectEngine engine,
+                 Command wakeup_command);  // SleepCommand instance will be automatically destroyed when done.
 } SleepCommandMethodStruct;
 typedef const SleepCommandMethodStruct* SleepCommandMethod;
 

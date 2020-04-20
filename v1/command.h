@@ -6,7 +6,7 @@
 typedef struct CommandInterfaceStruct* Command;
 typedef struct CommandInterfaceStruct {
   void (*Delete)(Command* self);
-  void (*Do)(Command self);  // The Command instance will be destroyed when done.
+  void (*Do)(Command self);
 } CommandInterfaceStruct;
 
 #endif  // V1_COMMAND_H_
