@@ -26,6 +26,8 @@ add_executable(
     command/null_command_test.cpp
     command/sleep_command_test.cpp
     engine/default_active_object_engine_test.cpp
+    script/script_spy.c
+    script/script_spy_test.cpp
     util/time_unit_stub.c
     )
 
