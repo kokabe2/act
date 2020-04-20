@@ -7,6 +7,7 @@ include_directories(
 
 add_library(
     act
+    command/null_command.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/list/list_node.c
@@ -16,6 +17,7 @@ add_library(
 add_executable(
     gtests
     main.cpp
+    command/null_command_test.cpp
     )
 
 add_dependencies(gtests googletest)
