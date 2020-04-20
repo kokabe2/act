@@ -8,6 +8,7 @@ include_directories(
 add_library(
     act
     command/null_command.c
+    command/sleep_command.c
     engine/active_object_engine_task.c
     engine/default_active_object_engine.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
@@ -22,6 +23,7 @@ add_executable(
     command/counting_command_stub.c
     command/counting_command_stub_test.cpp
     command/null_command_test.cpp
+    command/sleep_command_test.cpp
     engine/default_active_object_engine_test.cpp
     util/time_unit_stub.c
     )
