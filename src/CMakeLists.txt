@@ -11,10 +11,17 @@ add_library(
     command/sleep_command.c
     engine/active_object_engine_task.c
     engine/default_active_object_engine.c
+    script/script_base.c
+    script/script_runner.c
+    script/script_strategy.c
+    script/simple_script.c
+    ${PROJECT_SOURCE_DIR}/external/bleu/src/error/runtime_error.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/list/list_node.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/list/list.c
+    ${PROJECT_SOURCE_DIR}/external/bleu/src/string/str.c
+    ${PROJECT_SOURCE_DIR}/external/bleu/src/string/string_builder.c
     )
 
 add_executable(
@@ -25,6 +32,12 @@ add_executable(
     command/null_command_test.cpp
     command/sleep_command_test.cpp
     engine/default_active_object_engine_test.cpp
+    script/script_handle_spy.c
+    script/script_runner_test.cpp
+    script/script_spy.c
+    script/script_spy_test.cpp
+    script/script_strategy_test.cpp
+    script/simple_script_test.cpp
     util/time_unit_stub.c
     )
 
