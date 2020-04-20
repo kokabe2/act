@@ -13,6 +13,7 @@ add_library(
     engine/default_active_object_engine.c
     script/script_base.c
     script/script_runner.c
+    script/script_strategy.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/error/runtime_error.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
@@ -34,6 +35,7 @@ add_executable(
     script/script_runner_test.cpp
     script/script_spy.c
     script/script_spy_test.cpp
+    script/script_strategy_test.cpp
     util/time_unit_stub.c
     )
 
