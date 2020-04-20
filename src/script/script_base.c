@@ -4,6 +4,23 @@
 
 #include "script/script_base_protected.h"
 
+static void Recurse(ScriptBase self) {
+  ActiveObjectEngine e = self->engine;
+  e->AddCommand(e, (Command)self);
+}
+
+static void Notify(ScriptBase self) {
+  ActiveObjectEngine e = self->engine;
+  e->AddCommand(e, self->notification_command);
+}
+
+static const ScriptBaseProtectedMethodStruct kProtectedMethod = {
+    .Recurse = Recurse,
+    .Notify = Notify,
+};
+
+const ScriptBaseProtectedMethod _scriptBase = &kProtectedMethod;
+
 static void SetEngine(Command self, ActiveObjectEngine engine) { ((ScriptBase)self)->engine = engine; }
 
 static void SetNotificationComand(Command self, Command notification_command) {

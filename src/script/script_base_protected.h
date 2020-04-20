@@ -12,5 +12,12 @@ typedef struct {
   const char *name;
   RuntimeError error;
 } ScriptBaseStruct, *ScriptBase;
+typedef struct {
+  void (*Recurse)(ScriptBase self);
+  void (*Notify)(ScriptBase self);
+} ScriptBaseProtectedMethodStruct;
+typedef const ScriptBaseProtectedMethodStruct *ScriptBaseProtectedMethod;
+
+extern const ScriptBaseProtectedMethod _scriptBase;
 
 #endif  // SRC_SCRIPT_SCRIPT_BASE_PROTECTED_H_
