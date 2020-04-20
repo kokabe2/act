@@ -4,10 +4,6 @@
 
 #include "script/script_base_protected.h"
 
-static void Delete(Command* self) { (*self)->Delete(self); }
-
-static void Run(Command self) { self->Do(self); }
-
 static void SetEngine(Command self, ActiveObjectEngine engine) { ((ScriptBase)self)->engine = engine; }
 
 static void SetNotificationComand(Command self, Command notification_command) {
@@ -21,8 +17,6 @@ static int GetErrorCode(Command self) { return ((ScriptBase)self)->error_code; }
 static bool HasError(Command self) { return ((ScriptBase)self)->error_code != 0; }
 
 static const ScriptAbstractMethodStruct kTheMethod = {
-    .Delete = Delete,
-    .Run = Run,
     .SetEngine = SetEngine,
     .SetNotificationComand = SetNotificationComand,
     .GetName = GetName,

@@ -30,13 +30,13 @@ class ScriptTest : public ::testing::Test {
 };
 
 TEST_F(ScriptTest, Delete) {
-  scriptBase->Delete(&script);
+  script->Delete(&script);
 
   EXPECT_TRUE(scriptSpy->DeleteCalled(script));
 }
 
-TEST_F(ScriptTest, Run) {
-  scriptBase->Run(script);
+TEST_F(ScriptTest, Do) {
+  script->Do(script);
 
   EXPECT_TRUE(scriptSpy->RunCalled(script));
 }

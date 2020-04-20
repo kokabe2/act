@@ -8,8 +8,6 @@
 #include "active_object_engine.h"
 
 typedef struct {
-  void (*Delete)(Command *self);
-  void (*Run)(Command self);
   void (*SetEngine)(Command self, ActiveObjectEngine engine);
   void (*SetNotificationComand)(Command self, Command notification_command);
   const char *(*GetName)(Command self);
