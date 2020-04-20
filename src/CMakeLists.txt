@@ -9,6 +9,7 @@ add_library(
     act
     command/counting_command_stub.c
     command/null_command.c
+    engine/default_active_object_engine.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/gcc/heap.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/heap/heap_usage.c
     ${PROJECT_SOURCE_DIR}/external/bleu/src/list/list_node.c
@@ -20,6 +21,7 @@ add_executable(
     main.cpp
     command/counting_command_stub_test.cpp
     command/null_command_test.cpp
+    engine/default_active_object_engine_test.cpp
     )
 
 add_dependencies(gtests googletest)
