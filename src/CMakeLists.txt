@@ -8,6 +8,7 @@ include_directories(
 add_library(
     act
     command/null_command.c
+    command/simple_command.c
     command/sleep_command.c
     engine/active_object_engine_task.c
     engine/default_active_object_engine.c
@@ -30,6 +31,7 @@ add_executable(
     command/counting_command_stub.c
     command/counting_command_stub_test.cpp
     command/null_command_test.cpp
+    command/simple_command_test.cpp
     command/sleep_command_test.cpp
     engine/default_active_object_engine_test.cpp
     script/script_handle_spy.c

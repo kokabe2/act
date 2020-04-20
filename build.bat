@@ -11,6 +11,7 @@ mkdir %OUTPUT_DIR% > NUL 2>&1
 %COMPILER% -output=obj -lang=c99 -nostuff -isa=rxv3 -debug -signed_char ^
            -include=v1/,src/,external/ ^
            src/command/null_command.c ^
+           src/command/simple_command.c ^
            src/command/sleep_command.c ^
            src/engine/active_object_engine_task.c ^
            src/engine/default_active_object_engine.c ^
