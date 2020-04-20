@@ -23,7 +23,6 @@ class SleepCommandTest : public ::testing::Test {
   }
 
   virtual void TearDown() {
-    c->Delete(&c);
     e->Delete(&e);
     wakeup->Delete(&wakeup);
   }

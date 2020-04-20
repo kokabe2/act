@@ -32,6 +32,7 @@ static void Do(Command base) {
     e->AddCommand(e, base);
   } else if (ShouldWakeUp(self, current_time)) {
     e->AddCommand(e, self->wakeup_command);
+    Delete(&base);
   } else {
     e->AddCommand(e, base);
   }
